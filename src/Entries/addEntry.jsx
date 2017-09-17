@@ -23,7 +23,16 @@ export default class AddEntry extends Component {
         {this.state.showForm &&
           <div>
             {incomeEntryFormData.map((input, idx) => {
-              return <input type={input.type} idx={idx} placeholder={input.placeholder} />
+              return <div key={idx}>
+                <label for={input.id}>{input.label}:
+                  <input
+                    type={input.type}
+                    name={input.id}
+                    id={input.id}
+                    placeholder={input.placeholder}
+                    required={input.required} />
+                </label>
+              </div>
             })}
           </div>}
       </div>

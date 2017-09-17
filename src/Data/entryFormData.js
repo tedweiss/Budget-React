@@ -23,7 +23,7 @@ const incomeEntryFormData = [
     required: true,
     placeholder: 'George'
   }, {
-    type: 'textbox',
+    type: 'textarea',
     label: 'notes',
     id: 'notes',
     required: false,
