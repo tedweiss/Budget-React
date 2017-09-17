@@ -21,7 +21,11 @@ export default class AddEntry extends Component {
       <div>
         <div onClick={this.handleClick}>Add Entry</div>
         {this.state.showForm &&
-          <div>Hi</div>}
+          <div>
+            {incomeEntryFormData.map((input, idx) => {
+              return <input type={input.type} idx={idx} placeholder={input.placeholder} />
+            })}
+          </div>}
       </div>
     )
   }
