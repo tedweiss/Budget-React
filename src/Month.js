@@ -7,7 +7,7 @@ import Income from './Income'
 export default class Month extends Component {
   constructor (props) {
     super(props)
-    this.state = { type: 'budgets' }
+    this.state = { type: 'incomes' }
     this.transformDate = this.transformDate.bind(this)
     this.displayCurrency = this.displayCurrency.bind(this)
   }

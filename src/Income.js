@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import AddEntry from './Entries/addEntry'
+
 export default class Income extends Component {
   render () {
     const {
@@ -13,6 +15,7 @@ export default class Income extends Component {
       return (
         <div className='Income'>
           This is an Income.
+          <AddEntry />
           {data.map((income, idx) => {
             return (
               <div key={idx}>
