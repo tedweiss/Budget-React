@@ -15,7 +15,7 @@ export default class Income extends Component {
       return (
         <div className='Income'>
           This is an Income.
-          <AddEntry />
+          <AddEntry type={'income'} />
           {data.map((income, idx) => {
             return (
               <div key={idx}>
