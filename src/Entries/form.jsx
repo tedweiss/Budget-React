@@ -5,6 +5,9 @@ import {Input} from './input'
 import {Textarea} from './textarea'
 
 export default class Form extends Component {
+  handleClick = () => {
+    console.log('handleClick')
+  }
   render () {
     let DisplayInput
     let inputs = {
@@ -17,7 +20,7 @@ export default class Form extends Component {
       income: incomeEntryFormData
     }
     return (
-      <div>
+      <form noValidate>
         {data[this.props.type].map((input, idx) => {
           DisplayInput = inputs[input.type]
           return (
@@ -33,7 +36,8 @@ export default class Form extends Component {
             </div>
           )
         })}
-      </div>
+        <button type={'submit'} onClick={this.handleClick}>Add {this.props.type}</button>
+      </form>
     )
   }
 }
