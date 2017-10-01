@@ -12,20 +12,12 @@ export default class App extends Component {
     this.addData()
   }
   addData () {
-    console.log('addData')
-    console.log(testData)
     let data = testData.data()
     this.setState({ data: data })
   }
-  render() {
-    console.log('state: ', this.state)
+  render () {
     return (
-      <div>
-        {/*<Income data={this.state.data.transactions.incomes} />*/}
-        {/*<Expense data={this.state.data.transactions.expenses} />*/}
-        {/*<Budget data={this.state.data.transactions.budgets} />*/}
-        <MainApp years={this.state.data.years} />
-      </div>
+      <MainApp years={this.state.data.years} />
     )
   }
 }
