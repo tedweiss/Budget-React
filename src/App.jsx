@@ -11,7 +11,7 @@ export default class App extends Component {
   componentWillMount () {
     this.addData()
   }
-  addData () {
+  addData = () => {
     let data = testData.data()
     this.setState({ data: data })
   }
