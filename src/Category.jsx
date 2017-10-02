@@ -5,7 +5,6 @@ export default class Category extends Component {
     let data = this.props.data
     if (data) {
       let subcategories = data[Object.keys(data)[0]]
-      console.log(subcategories)
       let total = 0
       subcategories.forEach(function (subcategory) {
         total += parseFloat(subcategory.amount)

@@ -62,25 +62,28 @@ export default class Expense extends Component {
       })
     }
     return (
-      <div className='Budget'>
-        This is Budget.
-        {data && data.map((budget, idx) => {
-          return (
-            <div key={idx}>
-              <p>{budget.year}</p>
-              <p>{budget.month}</p>
-              <p>{displayCurrency(budget.amount)}</p>
-              <p>{budget.category}</p>
-              <p>{budget.subcategory}</p>
-            </div>
-          )
-        })}
-        {categoriesJSON.map((category, idx) => {
-          return <Category
-            key={idx}
-            data={category}
-            displayCurrency={displayCurrency} />
-        })}
+      <div>
+        {data &&
+          <div className='Budget'>
+            This is Budget.
+            {data.map((budget, idx) => {
+              return (
+                <div key={idx}>
+                  <p>{budget.year}</p>
+                  <p>{budget.month}</p>
+                  <p>{displayCurrency(budget.amount)}</p>
+                  <p>{budget.category}</p>
+                  <p>{budget.subcategory}</p>
+                </div>
+              )
+            })}
+            {categoriesJSON.map((category, idx) => {
+              return <Category
+                key={idx}
+                data={category}
+                displayCurrency={displayCurrency} />
+            })}
+          </div>}
       </div>
     )
   }

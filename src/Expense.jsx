@@ -8,9 +8,9 @@ export default class Expense extends Component {
       displayCurrency
     } = this.props
     return (
-      <div className='Expense'>
+      <div>
         {data &&
-          <div>
+          <div className='Expense'>
             This is an Expense.
             {data.map((expense, idx) => {
               return (
