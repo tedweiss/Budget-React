@@ -9,19 +9,12 @@ export default class MainApp extends Component {
   }
   render () {
     const {
-          years
-        } = this.props
-    // data.sort(function (a, b) {
-    //   if (a.category < b.category) return -1
-    //   if (a.category > b.category) return 1
-    //   return 0
-    // })
-    console.log('years: ', years)
+      years
+    } = this.props
     return (
-      <div className='Year'>
+      <div className='main-app'>
         <p>This is {this.state.year}.</p>
         {years.map((year, idx) => {
-          console.log(year['year'])
           if (year['year'] === this.state.year) {
             return <Year year={year} key={idx} />
           }
