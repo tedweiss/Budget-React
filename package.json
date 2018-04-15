@@ -1,23 +1,16 @@
 {
-  "name": "Budget-React",
+  "name": "budget-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-scripts": "0.8.5"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "standard": {
-    "parser": "babel-eslint"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "standard": "^10.0.3"
   }
 }

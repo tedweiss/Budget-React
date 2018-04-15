@@ -8,13 +8,14 @@ export default class App extends Component {
     super(props)
     this.state = { data: '' }
   }
-  componentWillMount () {
+  componentDidMount () {
     this.addData()
   }
   addData = () => {
     let data = testData.data()
     this.setState({ data: data })
   }
+
   render () {
     return (
       <MainApp years={this.state.data.years} />
