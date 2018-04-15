@@ -1,24 +1,9 @@
 import React, { Component } from 'react'
 
-import MainApp from './MainApp'
-import { testData } from './dataLoader'
+import Year from './Year'
 
 export default class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { data: '' }
-  }
-  componentDidMount () {
-    this.addData()
-  }
-  addData = () => {
-    let data = testData.data()
-    this.setState({ data: data })
-  }
-
   render () {
-    return (
-      <MainApp years={this.state.data.years} />
-    )
+    return <Year />
   }
 }
