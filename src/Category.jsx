@@ -12,13 +12,30 @@ export default class Category extends Component {
       return total.toFixed(2)
     }
   }
+  IncomeDisplay = props => {
+    let income = props.income
+    return (
+      <div>
+        <p>{income.year}</p>
+        <p>{income.month}</p>
+        <p>{props.displayCurrency(income.amount)}</p>
+        <p>{props.transformDate(income.date)}</p>
+        <p>{income.income_source}</p>
+        <p>{income.whose_income}</p>
+        <p>{income.notes}</p>
+      </div>
+    )
+  }
   render () {
-    const { data, displayCurrency, transformDate } = this.props
+    const { data, type, displayCurrency, transformDate } = this.props
     let categoryTitle = Object.keys(data)[0]
-    let categoryTotal = this.totalCategoryAmount()
     if (!data) {
       return <div />
     } else {
+      if (type === 'incomes') {
+        return <this.IncomeDisplay income={data} displayCurrency={displayCurrency} transformDate={transformDate} />
+      }
+      let categoryTotal = this.totalCategoryAmount()
       return (
         <div className='Category'>
           {data &&
@@ -32,10 +49,8 @@ export default class Category extends Component {
                     <p>{category.month}</p>
                     <p>{category.subcategory}</p>
                     <p>{displayCurrency(category.amount)}</p>
-                    {transformDate && <p>{transformDate(category.date)}</p>}
+                    {type === 'expenses' && <p>{transformDate(category.date)}</p>}
                     <p>{category.payee}</p>
-                    <p>{category.income_source}</p>
-                    <p>{category.whose_income}</p>
                     <p>{category.notes}</p>
                   </div>
                 )

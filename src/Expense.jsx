@@ -14,7 +14,13 @@ export default class Expense extends Component {
             This is an Expense.
             {categoriesJSON.map((expense, idx) => {
               return (
-                <Category key={idx} data={expense} displayCurrency={displayCurrency} transformDate={transformDate} />
+                <Category
+                  key={idx}
+                  type={'expenses'}
+                  data={expense}
+                  displayCurrency={displayCurrency}
+                  transformDate={transformDate}
+                />
               )
             })}
           </div>}

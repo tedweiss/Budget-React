@@ -13,7 +13,7 @@ export default class Budget extends Component {
           <div className='Budget'>
             This is Budget.
             {categoriesJSON.map((category, idx) => {
-              return <Category key={idx} data={category} displayCurrency={displayCurrency} />
+              return <Category key={idx} type={'budgets'} data={category} displayCurrency={displayCurrency} />
             })}
           </div>}
       </div>
