@@ -9,14 +9,11 @@ export default class Category extends Component {
       subcategories.forEach(function (subcategory) {
         total += parseFloat(subcategory.amount)
       })
-      return total
+      return total.toFixed(2)
     }
   }
   render () {
-    const {
-      data,
-      displayCurrency
-    } = this.props
+    const { data, displayCurrency, transformDate } = this.props
     let categoryTitle = Object.keys(data)[0]
     let categoryTotal = this.totalCategoryAmount()
     if (!data) {
@@ -35,7 +32,8 @@ export default class Category extends Component {
                     <p>{category.month}</p>
                     <p>{category.subcategory}</p>
                     <p>{displayCurrency(category.amount)}</p>
-                    {/* <p>{transformDate(category.date)}</p> */}
+                    {transformDate && <p>{transformDate(category.date)}</p>}
+                    <p>{category.payee}</p>
                     <p>{category.income_source}</p>
                     <p>{category.whose_income}</p>
                     <p>{category.notes}</p>

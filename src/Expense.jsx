@@ -1,29 +1,20 @@
 import React, { Component } from 'react'
 
+import Category from './Category'
+import { createCategoryStructure } from './utilities'
+
 export default class Expense extends Component {
   render () {
-    const {
-      data,
-      transformDate,
-      displayCurrency
-    } = this.props
+    const { data, transformDate, displayCurrency } = this.props
+    let categoriesJSON = createCategoryStructure(data)
     return (
       <div>
         {data &&
           <div className='Expense'>
             This is an Expense.
-            {data.map((expense, idx) => {
+            {categoriesJSON.map((expense, idx) => {
               return (
-                <div key={idx}>
-                  <p>{expense.year}</p>
-                  <p>{expense.month}</p>
-                  <p>{displayCurrency(expense.amount)}</p>
-                  <p>{transformDate(expense.date)}</p>
-                  <p>{expense.category}</p>
-                  <p>{expense.subcategory}</p>
-                  <p>{expense.payee}</p>
-                  <p>{expense.notes}</p>
-                </div>
+                <Category key={idx} data={expense} displayCurrency={displayCurrency} transformDate={transformDate} />
               )
             })}
           </div>}
