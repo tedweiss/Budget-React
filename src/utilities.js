@@ -42,5 +42,31 @@ function createCategoryObjects (categories) {
     return categoryObjects
   }
 }
+function displayCurrency (amount) {
+  if (amount < 0) {
+    amount = '-$' + createNumberWithCommas(amount)
+  } else {
+    amount = '$' + createNumberWithCommas(amount)
+  }
+  return amount
+}
+function createNumberWithCommas (x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+function transformDate (date) {
+  var newDay = date.slice(8, 10)
+  var newMonth = date.slice(5, 7)
+  var newYear = date.slice(2, 4)
+  newDay = checkSingleDigitDate(newDay)
+  newMonth = checkSingleDigitDate(newMonth)
+  var newDate = newMonth + '/' + newDay + '/' + newYear
+  return newDate
+}
+function checkSingleDigitDate (date) {
+  if (date.indexOf(0) === 0) {
+    date = date.slice(1)
+  }
+  return date
+}
 
-export { createCategoryStructure }
+export { createCategoryStructure, displayCurrency, transformDate }

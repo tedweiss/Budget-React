@@ -5,7 +5,7 @@ import { createCategoryStructure } from './utilities'
 
 export default class Budget extends Component {
   render () {
-    const { data, displayCurrency } = this.props
+    const { data } = this.props
     let categoriesJSON = createCategoryStructure(data)
     return (
       <div>
@@ -13,7 +13,7 @@ export default class Budget extends Component {
           <div className='Budget'>
             This is Budget.
             {categoriesJSON.map((category, idx) => {
-              return <Category key={idx} type={'budgets'} data={category} displayCurrency={displayCurrency} />
+              return <Category key={idx} type={'budgets'} data={category} />
             })}
           </div>}
       </div>

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Expense from './Expense'
 import Budget from './Budget'
 import Income from './Income'
+import { displayCurrency } from './utilities'
 
 export default class Month extends Component {
   constructor (props) {
@@ -10,11 +11,11 @@ export default class Month extends Component {
     this.state = { type: 'budgets' }
   }
 
-  calculateTotals = (type) => {
+  calculateTotals = type => {
     let transType = this.props.month.transactionType[type]
     let total = 0
     if (transType) {
-      transType.map((tran) => {
+      transType.map(tran => {
         let amount = parseFloat(tran.amount)
         total += amount
       })
@@ -23,43 +24,18 @@ export default class Month extends Component {
     return total
   }
 
-  displayCurrency = (amount) => {
-    if (amount < 0) {
-      amount = '-$' + this.createNumberWithCommas(amount)
-    } else {
-      amount = '$' + this.createNumberWithCommas(amount)
-    }
-    return amount
-  }
-
-  transformDate = (date) => {
-    var newDay = date.slice(8, 10)
-    var newMonth = date.slice(5, 7)
-    var newYear = date.slice(2, 4)
-    newDay = this.checkSingleDigitDate(newDay)
-    newMonth = this.checkSingleDigitDate(newMonth)
-    var newDate = newMonth + '/' + newDay + '/' + newYear
-    return newDate
-  }
-
-  checkSingleDigitDate = (date) => {
-    if (date.indexOf(0) === 0) {
-      date = date.slice(1)
-    }
-    return date
-  }
-
-  displayTransactionType = (type) => {
+  displayTransactionType = type => {
     let transType = {
       budgets: Budget,
       expenses: Expense,
       incomes: Income
     }
     let TransactionView = transType[type]
-    return <TransactionView
-      data={this.props.month.transactionType[this.state.type]}
-      transformDate={this.transformDate}
-      displayCurrency={this.displayCurrency} />
+    return (
+      <TransactionView
+        data={this.props.month.transactionType[this.state.type]}
+      />
+    )
   }
 
   displayCategories = () => {
@@ -72,10 +48,6 @@ export default class Month extends Component {
     }
   }
 
-  createNumberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
-
   render () {
     let stateType = this.state.type
     this.displayCategories()
@@ -83,18 +55,19 @@ export default class Month extends Component {
       <div className='Month'>
         This is Month.
         <div>
-          <span>Budget: </span><span>{this.displayCurrency(this.calculateTotals('budgets'))}</span>
+          <span>Budget: </span><span>{displayCurrency(this.calculateTotals('budgets'))}</span>
         </div>
         <div>
-          <span>Expense: </span><span>{this.displayCurrency(this.calculateTotals('expenses'))}</span>
+          <span>Expense: </span><span>{displayCurrency(this.calculateTotals('expenses'))}</span>
         </div>
         <div>
-          <span>Income: </span><span>{this.displayCurrency(this.calculateTotals('incomes'))}</span>
+          <span>Income: </span><span>{displayCurrency(this.calculateTotals('incomes'))}</span>
         </div>
         {/* switch types here */}
-        <select defaultValue={this.state.type}
-          onChange={(event) => {
-            this.setState({type: event.target.value})
+        <select
+          defaultValue={this.state.type}
+          onChange={event => {
+            this.setState({ type: event.target.value })
           }}>
           <option value='' />
           <option value='budgets'>Budget</option>

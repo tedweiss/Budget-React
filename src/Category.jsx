@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { displayCurrency, transformDate } from './utilities'
+
 export default class Category extends Component {
   totalCategoryAmount = () => {
     let data = this.props.data
@@ -18,8 +20,8 @@ export default class Category extends Component {
       <div>
         <p>{income.year}</p>
         <p>{income.month}</p>
-        <p>{props.displayCurrency(income.amount)}</p>
-        <p>{props.transformDate(income.date)}</p>
+        <p>{displayCurrency(income.amount)}</p>
+        <p>{transformDate(income.date)}</p>
         <p>{income.income_source}</p>
         <p>{income.whose_income}</p>
         <p>{income.notes}</p>
@@ -27,7 +29,7 @@ export default class Category extends Component {
     )
   }
   render () {
-    const { data, type, displayCurrency, transformDate } = this.props
+    const { data, type } = this.props
     let categoryTitle = Object.keys(data)[0]
     if (!data) {
       return <div />
